@@ -1,5 +1,44 @@
 <html>
 <head>
+    <style>
+        fieldset {
+            background: lightyellow;
+            border: solid yellow 10px;
+            margin-bottom: 10px;
+            width: 720px;
+        }
+
+        label {
+            width: 180px;
+            display: inline-block;
+            text-align: right;
+            vertical-align: top;
+        }
+
+        .checkbox_radio_lable {
+            width: auto;
+        }
+
+        .range_word {
+            width: 60px;
+            text-align: center;
+        }
+
+        .min {
+            color: white;
+            background: red;
+        }
+
+        .max {
+            color: white;
+            background: darkviolet;
+        }
+
+        textarea {
+            width: 360px;
+            height: 50px;
+        }
+    </style>
 </head>
 <body>
 <h1>Please Enter Your Details For Our Dating Website!</h1>
@@ -12,7 +51,8 @@
 
         <label for="avatar">Your image:</label>
         <input type="file" id="avatar" name="avatar" required> <br>
-        Image preview:<img id="preview" name="preview">
+        <label for="preview">Image preview:</label>
+        <img id="preview" name="preview">
     </fieldset>
     <br>
 
@@ -23,11 +63,13 @@
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" placeholder="Your full name" required> <br>
 
-        Gender:
-        <input type="radio" id="male" name="gender" value="male" required>
-        <label for="male">Male</label>
-        <input type="radio" id="female" name="gender" value="female" required>
-        <label for="female">Female</label> <br>
+        <label for="gender_radio">Gender:</label>
+        <span id="gender_radio">
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male" class="checkbox_radio_lable">Male</label>
+            <input type="radio" id="female" name="gender" value="female" required>
+            <label for="female" class="checkbox_radio_lable">Female</label>
+        </span> <br>
 
         <label for="age">Age:</label>
         <input type="number" id="age" name="age"> <br>
@@ -54,10 +96,16 @@
         <legend>Your indicators</legend>
 
         <label for="height">Height:</label>
-        Short <input id="height" type="range" name="height" min="0" max="100"> Tall <br>
+        <label class="range_word min">Short</label>
+        <input id="height" type="range" name="height" min="0" max="100">
+        <label class="range_word max">Tall</label>
+
+        <br>
 
         <label for="salary">Salary:</label>
-        Poor <input id="salary" type="range" name="salary" min="0" max="100"> Rich
+        <label class="range_word min">Poor</label>
+        <input id="salary" type="range" name="salary" min="0" max="100">
+        <label class="range_word max">Rich</label>
     </fieldset>
 
     <!-- Your Contact Information -->
@@ -73,13 +121,15 @@
         <label for="address">Address:</label>
         <textarea id="address" name="address"></textarea> <br>
 
-        Method to contact you:
-        <input type="checkbox" id="email_ch" name="contact" value="email">
-        <label for="email_ch">Email</label>
-        <input type="checkbox" id="whatsapp" name="contact" value="wahtsapp">
-        <label for="whatsapp">Whatsapp</label>
-        <input type="checkbox" id="in-app" name="contact" value="in-app">
-        <label for="in-app">In-appchat</label>
+        <label for="methods_to_contact">Method to contact you:</label>
+        <span id="methods_to_contact">
+            <input type="checkbox" id="email_ch" name="contact" value="email">
+            <label for="email_ch" class="checkbox_radio_lable">Email</label>
+            <input type="checkbox" id="whatsapp" name="contact" value="wahtsapp">
+            <label for="whatsapp" class="checkbox_radio_lable">Whatsapp</label>
+            <input type="checkbox" id="in-app" name="contact" value="in-app">
+            <label for="in-app" class="checkbox_radio_lable">In-appchat</label>
+        </span>
     </fieldset>
 
     <input type="submit" value="Submit">
