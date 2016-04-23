@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Color guessing game</title>
+</head>
+<body onload="do_game()">
+<script>
+    var colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'DarkBlue', 'Violet'].sort();
+    var targetColor = pickRandomColor(colors);
+    var finished = false;
+
+    function do_game() {
+        while (!finished) {
+            var userGuess = prompt("I am thinking one of these colors:\n\n"
+                    + colors.join(", ") + "\n\n"
+                    + "What color am I thinking of?"
+                    + " (Target is: " + targetColor + ".)");
+
+            if (userGuess == targetColor) {
+                finished = true;
+            }
+        }
+    }
+
+    function pickRandomColor(colorArray) {
+        var position = Math.floor(Math.random() * colorArray.length);
+        return colorArray[position];
+    }
+</script>
+</body>
+</html>
