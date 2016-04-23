@@ -7,23 +7,49 @@
     var colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'DarkBlue', 'Violet'].sort();
     var targetColor = pickRandomColor(colors);
     var finished = false;
+    var guessNumber = 0;
 
     function do_game() {
         while (!finished) {
+            guessNumber += 1;
             var userGuess = prompt("I am thinking one of these colors:\n\n"
                     + colors.join(", ") + "\n\n"
                     + "What color am I thinking of?"
                     + " (Target is: " + targetColor + ".)");
 
-            if (userGuess == targetColor) {
-                finished = true;
-            }
+            finished = check_guess(userGuess)
         }
+    }
+
+    function check_guess(userGuess) {
+        if (colors.indexOf(userGuess) < 0) {
+            alert("I don't recognize that color!");
+            return false;
+        }
+
+        if (userGuess < targetColor) {
+            alert("Your input is alphabetically lower than mine!");
+            return false;
+        }
+
+        if (userGuess > targetColor) {
+            alert("Your input is alphabetically higher than mine!");
+            return false;
+        }
+
+        changeBgColor(targetColor);
+        alert("You are right! You took " + guessNumber + " guesses!");
+        return true;
     }
 
     function pickRandomColor(colorArray) {
         var position = Math.floor(Math.random() * colorArray.length);
         return colorArray[position];
+    }
+
+    function changeBgColor(color) {
+        var documentBody = document.getElementsByTagName("body")[0];
+        documentBody.style.background = color;
     }
 </script>
 </body>
