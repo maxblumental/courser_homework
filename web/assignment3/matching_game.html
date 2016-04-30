@@ -29,6 +29,7 @@ Click on the extra smiling face on the left.
 <script>
     var numberOfFaces = 5;
     var theLeftSide = document.getElementById("leftSideDiv");
+    var theRightSide = document.getElementById("rightSideDiv");
 
     function generateFaces() {
         for (var i = 0; i < numberOfFaces; i++) {
@@ -42,6 +43,10 @@ Click on the extra smiling face on the left.
 
             theLeftSide.appendChild(image);
         }
+
+        var clone = theLeftSide.cloneNode(true);
+        clone.removeChild(clone.lastElementChild);
+        theRightSide.appendChild(clone);
     }
 </script>
 </body>
