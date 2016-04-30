@@ -30,6 +30,13 @@ Click on the extra smiling face on the left.
     var numberOfFaces = 5;
     var theLeftSide = document.getElementById("leftSideDiv");
     var theRightSide = document.getElementById("rightSideDiv");
+    var theBody = document.getElementsByTagName("body")[0];
+
+    theLeftSide.lastChild.onclick = function (event) {
+        event.stopPropagation();
+        numberOfFaces += 5;
+        generateFaces();
+    };
 
     function generateFaces() {
         for (var i = 0; i < numberOfFaces; i++) {
@@ -47,6 +54,24 @@ Click on the extra smiling face on the left.
         var clone = theLeftSide.cloneNode(true);
         clone.removeChild(clone.lastElementChild);
         theRightSide.appendChild(clone);
+
+        theLeftSide.lastChild.onclick = function (event) {
+            event.stopPropagation();
+            numberOfFaces += 5;
+            generateFaces();
+        };
+
+        theBody.onclick = function gameOver() {
+            alert("Game over!");
+            theBody.onclick = null;
+            theLeftSide.lastChild.onclick = null;
+            while (theLeftSide.firstChild) {
+                theLeftSide.removeChild(theLeftSide.firstChild)
+            }
+            while (theRightSide.firstChild) {
+                theRightSide.removeChild(theRightSide.firstChild)
+            }
+        }
     }
 </script>
 </body>
